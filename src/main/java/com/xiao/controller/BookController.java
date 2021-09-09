@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -75,6 +76,20 @@ public class BookController {
         bookService.deleteBookById(id);
         return "redirect:/book/allBook";
 
+    }
+
+    //查询一本书
+    @RequestMapping("/queryBook")
+    public String queryBook(String queryBookName,Model model){
+        Books books = bookService.queryBookByName(queryBookName);
+        List<Books> list = new ArrayList<Books>();
+        list.add(books);
+        if (books == null){
+            list =  bookService.queryAllBook();
+            model.addAttribute("error","未找到");
+        }
+        model.addAttribute("list",list);
+        return "allBook";
     }
 
 }

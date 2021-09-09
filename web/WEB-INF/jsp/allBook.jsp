@@ -19,10 +19,21 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4 column"></div>
-        <%--toAddBook--%>
-        <a class="btn btn-primary" href="${pageContext.request.contextPath}/book/toAddBook">新增书籍</a>
+        <div class="col-md-4 column">
+            <%--toAddBook--%>
+            <a class="btn btn-primary" href="${pageContext.request.contextPath}/book/toAddBook">新增书籍</a>
+                <a class="btn btn-primary" href="${pageContext.request.contextPath}/book/allBook">全部书籍</a>
 
+        </div>
+        <div class="col-md-4 column"></div>
+      <div class="col-md-4 column">
+          <!--查询书籍-->
+          <form class="form-inline" action="${pageContext.request.contextPath}/book/queryBook" method="get" style="float: right">
+              <span style="color: red ;font-weight: bold">${error}</span>
+              <input type="text" name="queryBookName" placeholder="请输入要查询的书籍名称" >
+              <input type="submit" value="查询" class="btn btn-primary">
+          </form>
+      </div>
     </div>
 
     <div class="row clearfix">

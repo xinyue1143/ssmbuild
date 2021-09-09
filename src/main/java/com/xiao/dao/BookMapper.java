@@ -2,6 +2,7 @@ package com.xiao.dao;
 
 import com.xiao.pojo.Books;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -27,6 +28,7 @@ public interface BookMapper {
     //查询全部图书
     List<Books> queryAllBook();
 
-
+    //按名字查询图书
+    Books queryBookByName(@PathVariable("bookName")String bookName);
 
 }
